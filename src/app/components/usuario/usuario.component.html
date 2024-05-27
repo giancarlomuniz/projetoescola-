@@ -1,0 +1,210 @@
+
+
+   
+      <html>
+        <head>
+        
+                 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        </head>
+        <body>
+        
+        <form class="form-horizontal" [formGroup]="usuarioForm">
+        <fieldset>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Cadastro de Cliente</div>
+            
+            <div class="panel-body">
+        <div class="form-group">
+        <!--
+        <div class="form-group">   
+        <div class="col-md-4 control-label">
+            <img id="logo" src="http://blogdoporao.com.br/wp-content/uploads/2016/12/Faculdade-pitagoras.png"/>
+        </div>
+        <div class="col-md-4 control-label">
+            <h1>Cadastro de Cliente</h1>
+            
+        </div>
+        </div>
+            --><div class="col-md-2 control-label">
+              <h3>Dados Pessoas</h3>
+            </div>
+  
+        <div class="col-md-11 control-label">
+               
+        </div>
+        </div>
+        
+           
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="id">Matricula </label>  
+          <div class="col-md-1" >
+          <input id= "id" name="id" placeholder="Matricula"  class="form-control input-md" 
+       type="number" readonly="true" formControlNam e="id">
+          </div>
+          <label class="col-md-2 control-label" for="nome" style="margin-left: -11%;">Nome </label>  
+          <div class="col-md-4">
+          <input id="nome" name="nome" formControlName="nome" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+            </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="cpf">CPF</label>  
+          <div class="col-md-2">
+          <input id="cpf" name="cpf" placeholder="Apenas números" class="form-control input-md" 
+            formControlName="cpf" required="" type="text" maxlength="11" pattern="[0-9]+$">
+          </div>
+          
+      
+        
+        <!-- Multiple Radios (inline) -->
+        
+          
+        </div>
+        
+        <!-- Telefone text-->
+      
+         </div> 
+        
+      
+        <!-- telefone text-->
+        <div class="form-group">
+          <div class="col-md-2 control-label">
+              <h3>Dados Acesso</h3>
+          </div>
+  
+       </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="login">Email </label>
+          <div class="col-md-3">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input id="login" name="login" formControlName="login" class="form-control" placeholder="email@email.com" required="" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+            </div>
+          </div> 
+  
+          <label class="col-md-2 control-label" for="senha">Senha </label>
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+              <input id="senha" name="senha" formControlName="senha" class="form-control" placeholder="Senha" fo required="" type="password" >
+            </div>
+          </div>
+        </div>
+  
+         <div class="form-group">
+          <div class="col-md-2 control-label">
+              <h3>Dados Endereço</h3>
+          </div>
+       </div>
+         <!-- Search input-->
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="Cep">CEP</label>
+        <div class="col-md-2">
+          <input id="cep"  name="cep" (blur)="consultaCep()" placeholder="Apenas números" formControlName ='cep' (ngModel)="usuarioForm.get('cep')" class="form-control input-md" required="" value="" type="search" maxlength="8" pattern="[0-9]+$">
+          
+        </div>
+     
+      </div>
+      
+      <!-- Prepended text-->
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="prependedtext">Endereço</label>
+        <div class="col-md-4">
+          <div class="input-group">
+            <span class="input-group-addon">Logradouro</span>
+            <input id="logradouro" name="logradouro" class="form-control"  formControlName ='logradouro' (ngModel)="usuarioForm.get('logradouro')" placeholder="" required=""  type="text">
+           
+          </div>
+          
+        </div>
+          <div class="col-md-2">
+          <div class="input-group">
+            <span class="input-group-addon">complemento </span>
+            <input id="complemento"  name="complemento"   class="form-control" formControlName ='complemento'  (ngModel)="usuarioForm.get('complemento')" placeholder="" required=""  type="text">
+          </div>
+          
+        </div>
+        
+        <div class="col-md-3">
+          <div class="input-group">
+            <span class="input-group-addon">Bairro</span>
+            <input id="bairro" name="bairro" class="form-control"  formControlName ='bairro' (ngModel)="usuarioForm.get('bairro')"  placeholder="" required=""type="text">
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="prependedtext"></label>
+        <div class="col-md-4">
+          <div class="input-group">
+            <span class="input-group-addon">Cidade</span>
+            <input id="localidade" name="localidade" formControlName ='localidade' (ngModel)="usuarioForm.get('localidade')"   class="form-control" placeholder="" required=""  type="text">
+          </div>
+          
+        </div>
+        
+         <div class="col-md-2">
+          <div class="input-group">
+            <span class="input-group-addon">Estado</span>
+            <input id="uf" name="estado" formControlName ='uf' class="form-control"  (ngModel)="usuarioForm.get('uf')"   placeholder="Estado" required=""   type="text">
+          </div>
+          
+        </div>
+      </div>
+        
+      
+        <div class="form-group">
+          <div class="col-md-2 control-label">
+              <h3>Dados Escolares</h3>
+          </div>
+       </div>
+        <!-- Select Basic -->
+ 
+        
+         
+         <!-- Text input-->
+  
+         
+        <div id="newpost">
+           <div class="form-group">
+            <div class="col-md-2 control-label">
+                <h3>Responsável</h3>
+            </div>
+         </div>
+            
+    
+        
+        <!-- Text input-->
+    
+        
+ 
+        
+       
+        
+        
+        
+        <!-- Button (Double) -->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="Cadastrar"></label>
+          <div class="col-md-8">
+            <button id="Cadastrar" name="Cadastrar" (click)="cadUser()" class="btn btn-success" type="Submit">Cadastrar</button>
+            <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+          </div>
+        </div>
+        
+        </div>
+        </div>
+        
+        
+        </fieldset>
+        </form>
+        
+        </body>
+        </html>

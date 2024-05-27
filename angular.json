@@ -51,8 +51,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
-              "proxyConfig": "src/proxy.confi.js"
+              "namedChunks": true
+             
             }
           },
           "defaultConfiguration": "production"

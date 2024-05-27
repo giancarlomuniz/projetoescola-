@@ -1,0 +1,8 @@
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+

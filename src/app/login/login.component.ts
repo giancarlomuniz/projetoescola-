@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { LoginService } from '../services/login.service';
-import { Usuario } from '../model/usuario';
+import { Usuario } from '../model/Usuario';
 
 
 @Component({
@@ -58,15 +58,14 @@ recuperarSenha(){
   const usuario = this.loginObjeto();
 
   var login = usuario.login;
-
-  console.info('Login :' + login);
-
-  if (login == '') {
+  if (login === null) {
     alert('Informe o login para recuper a senha');
   }else{
-
-    this.loginService.recuperar(login);
+    alert('Login recuperado com sucesso');
+    this.loginService.recuperarSenha(login);
   }
 }
+
+
 
 }

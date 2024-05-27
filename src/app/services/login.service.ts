@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { enviroment } from '../environments/environment';
 import { Router } from '@angular/router';
-import { Usuario } from '../model/usuario';
+import { Usuario } from '../model/Usuario';
+import { AppConstants } from '../app-constants';
+
+
 
 
 @Injectable({
@@ -13,18 +15,19 @@ export class LoginService {
  
 
 
-private urlApi = enviroment.urlApi
+
 
   constructor(private http: HttpClient, private router: Router) { }
 
 
   logar(usuario: Usuario){
- return this.http.post<String>(enviroment.urlApi, JSON.stringify( usuario)).subscribe({
+ return this.http.post<String>(AppConstants.baseLogin, JSON.stringify( usuario)).subscribe({
    next:(res) =>{
   var respJson = JSON.stringify(res)
 var jwt = JSON.parse(respJson);
 
 localStorage.setItem('Authorization',jwt.Authorization);
+localStorage.setItem('username',jwt.username);
 
 this.router.navigate(['home']);
 
@@ -41,32 +44,35 @@ error:(error) => {
  
   }
 
-  recuperar(login: String) {
-return this.http.post<String>(enviroment.urlApiLocal + 'recuperarSenha', login).subscribe({
+recuperarSenha(login: String) {
 
-  next:(res) =>{
-    var respJson = JSON.stringify(res);
-        var resposta = JSON.parse(respJson);
+  
+return this.http.post<String>(AppConstants.baseUrl + "/recuperarSenha", login).subscribe({
 
-          alert(resposta.msg);
-  },
+next:(res) => {
+  var respJson = JSON.stringify(res);
+  var resposta =JSON.parse(respJson);
+  alert(resposta.msg);
+},
 error:(error) =>{
   var respJson = JSON.stringify(error);
-         var resposta = JSON.parse(respJson);
+  var resposta = JSON.parse(respJson);
 
-          alert(resposta.msg);
-}
-
+   alert(resposta.msg);
+},
 
   });
 
   }
 
   usuarioLogado(){
-    var auhorization = '' + localStorage.getItem('token');
+    var auhorization = '' + localStorage.getItem('Authorization');
     return auhorization !== '' && auhorization !== null && auhorization!== 'null';
   }
 
-  
+  deslogar(){
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
 }
 

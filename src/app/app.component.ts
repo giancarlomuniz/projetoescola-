@@ -15,6 +15,10 @@ export class AppComponent implements OnInit {
 
   }
 
+userLogado(){
+ return this.loginService.usuarioLogado();
+}
+
 ngOnInit(): void {
   if(this.loginService.usuarioLogado()){
 this.router.navigate(['home']);

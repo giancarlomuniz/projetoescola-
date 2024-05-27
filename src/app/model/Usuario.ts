@@ -1,6 +1,17 @@
 export interface Usuario{
+    
 id?:Number;
-login: String
-senha:String;
+nome?:String;
+login:String;
+senha?:String;
+cpf?:String;
+cep?:String;
+logradouro?:String;
+complemento?:String;
+bairro?:String;
+localidade?:String;
+uf?:String;
+
+
 
 }
