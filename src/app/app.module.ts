@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {  HttpClientModule} from '@angular/common/http';
@@ -13,6 +14,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NavEsquedaComponent } from './nav-esqueda/nav-esqueda.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { ProfessorComponent } from './components/professor/professor.component';
+
 
 
 
@@ -33,13 +36,14 @@ export const routes = RouterModule.forRoot(appRoutes);
 
 @NgModule({
   declarations: [
-    AppComponent,
+       AppComponent,
     HomeComponent,
     LoginComponent,
     NavbarComponent,
     NavEsquedaComponent,
     CategoriaComponent,
     UsuarioComponent,
+    ProfessorComponent
   
   
   ],
@@ -49,7 +53,10 @@ export const routes = RouterModule.forRoot(appRoutes);
     ReactiveFormsModule,
     HttpClientModule,
     routes,
-      HttpIinterceptorModule
+      HttpIinterceptorModule,
+
+
+
   
   ],
   providers: [],

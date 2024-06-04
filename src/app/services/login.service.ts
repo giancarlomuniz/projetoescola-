@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
 import { AppConstants } from '../app-constants';
+import { Categoria } from '../model/categoria';
+
 
 
 
@@ -28,6 +30,7 @@ var jwt = JSON.parse(respJson);
 
 localStorage.setItem('Authorization',jwt.Authorization);
 localStorage.setItem('username',jwt.username);
+localStorage.setItem('professor',jwt.professor);
 
 this.router.navigate(['home']);
 
@@ -74,5 +77,16 @@ error:(error) =>{
     localStorage.clear();
     this.router.navigate(['login']);
   }
+
+
+
+ objetoUser():String{
+  const codUse = localStorage.getItem ('professor') ;
+    return codUse;
+  }
+
+
+
+
 }
 
