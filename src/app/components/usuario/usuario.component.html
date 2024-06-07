@@ -13,10 +13,13 @@
         
         <form class="form-horizontal" [formGroup]="usuarioForm">
 
-      <fieldset style="width: 80%;margin-left: 10%;">
+      <fieldset style="width: 77%;margin-left: 14%; ">
         <div class="panel panel-primary">
             <div class="panel-heading">Cadastro de Cliente</div>
+           
+            <div class="overflow-y-scroll" style="height: 400px;">
             
+
             <div class="panel-body">
         <div class="form-group">
         <!--
@@ -31,8 +34,7 @@
         </div>
         
             -->
-            
-     
+           
 
             <div class="card">
               <div class="card-body">
@@ -88,6 +90,88 @@
         </div>
   
       </div> 
+      <div class="form-group">
+        <div class="col-md-2 control-label">
+            <h3>Dados Endereço</h3>
+        </div>
+     </div>
+       <!-- Search input-->
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="cep">CEP</label>
+      <div class="col-md-2">
+        <input id="cep"  name="cep" (blur)="consultaCep()" placeholder="Apenas números" formControlName ='cep' 
+              [value]="usuarioForm.get('cep')" class="form-control input-md" required="" value="" type="search" maxlength="9" pattern="[0-9]+$">
+        
+      </div>
+   
+    </div>
+    
+    <!-- Prepended text-->
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="logradouro1">Endereço</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">Logradouro</span>
+          <input id="logradouro" name="logradouro1" class="form-control"  formControlName ='logradouro' placeholder="" required=""  type="text">
+         
+        </div>
+        
+      </div>
+        <div class="col-md-2">
+          <label class="col-md-2 control-label" for="complemento"></label>
+        <div class="input-group">
+          <span class="input-group-addon">complemento </span>
+          <input id="complemento"  name="complemento"   class="form-control" formControlName ='complemento'
+                  [value]="usuarioForm.get('complemento')" placeholder="" required=""  type="text">
+        </div>
+        
+      </div>
+      
+      <div class="col-md-3">
+        <label class="col-md-2 control-label" for="bairro"></label>
+        <div class="input-group">
+          <span class="input-group-addon">Bairro</span>
+          <input id="bairro" name="bairro" class="form-control"  formControlName ='bairro' [value]="usuarioForm.get('bairro')"  placeholder="" required=""type="text">
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="localidade"></label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">Cidade</span>
+          <input id="localidade" name="localidade" formControlName ='localidade' [value]="usuarioForm.get('localidade')"   class="form-control" placeholder="" required=""  type="text">
+        </div>
+        
+      </div>
+      
+       <div class="col-md-2">
+        <label class="col-md-2 control-label" for="uf"></label>
+        <div class="input-group">
+          <span class="input-group-addon">Estado</span>
+          <input id="uf" name="uf" formControlName ='uf' class="form-control"  [value]="usuarioForm.get('uf')"   placeholder="Estado" required=""   type="text">
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+          <h3>Dados Institucional</h3>
+      </div>
+   </div>
+    <!-- Select Basic -->
+  <label class="col-md-2 control-label" for="cargos">Cargos </label>
+      <div class="col-md-3">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <select class="form-control" id="cargos" name="cargos" formControlName="cargos" >
+        <option selected label="[----SELECIONE----]" disabled></option>
+        <option *ngFor="let cargos of categoria" value= {{cargos.descricao}}  >{{cargos.descricao}}</option>
+      </select>
+      </div>
       <!-- Telefone text-->
       
         <!-- telefone text-->
@@ -108,7 +192,7 @@
           <div class="col-md-3">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input id="login" name="login" formControlName="login" class="form-control" placeholder="email@email.com" required="" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+              <input id="login" name="login" formControlName="login"  class="form-control" placeholder="email@email.com" required="" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
             </div>
           </div> 
   
@@ -123,138 +207,48 @@
           </div>
         </div>
   </div></div>
-
-
-<div class="card">
-  <div class="card-body">
-         <div class="form-group">
-          <div class="col-md-2 control-label">
-              <h3>Dados Endereço</h3>
-          </div>
-       </div>
-         <!-- Search input-->
-      <div class="form-group">
-        <label class="col-md-2 control-label" for="cep">CEP</label>
-        <div class="col-md-2">
-          <input id="cep"  name="cep" (blur)="consultaCep()" placeholder="Apenas números" formControlName ='cep' [value]="usuarioForm.get('cep')" class="form-control input-md" required="" value="" type="search" maxlength="9" pattern="[0-9]+$">
-          
-        </div>
-     
-      </div>
-      
-      <!-- Prepended text-->
-      <div class="form-group">
-        <label class="col-md-2 control-label" for="logradouro1">Endereço</label>
-        <div class="col-md-4">
-          <div class="input-group">
-            <span class="input-group-addon">Logradouro</span>
-            <input id="logradouro" name="logradouro1" class="form-control"  formControlName ='logradouro' placeholder="" required=""  type="text">
-           
-          </div>
-          
-        </div>
-          <div class="col-md-2">
-            <label class="col-md-2 control-label" for="complemento"></label>
-          <div class="input-group">
-            <span class="input-group-addon">complemento </span>
-            <input id="complemento"  name="complemento"   class="form-control" formControlName ='complemento'  [value]="usuarioForm.get('complemento')" placeholder="" required=""  type="text">
-          </div>
-          
-        </div>
-        
-        <div class="col-md-3">
-          <label class="col-md-2 control-label" for="bairro"></label>
-          <div class="input-group">
-            <span class="input-group-addon">Bairro</span>
-            <input id="bairro" name="bairro" class="form-control"  formControlName ='bairro' [value]="usuarioForm.get('bairro')"  placeholder="" required=""type="text">
-          </div>
-          
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label class="col-md-2 control-label" for="localidade"></label>
-        <div class="col-md-4">
-          <div class="input-group">
-            <span class="input-group-addon">Cidade</span>
-            <input id="localidade" name="localidade" formControlName ='localidade' [value]="usuarioForm.get('localidade')"   class="form-control" placeholder="" required=""  type="text">
-          </div>
-          
-        </div>
-        
-         <div class="col-md-2">
-          <label class="col-md-2 control-label" for="uf"></label>
-          <div class="input-group">
-            <span class="input-group-addon">Estado</span>
-            <input id="uf" name="uf" formControlName ='uf' class="form-control"  [value]="usuarioForm.get('uf')"   placeholder="Estado" required=""   type="text">
-          </div>
-          
-        </div>
-      </div>
-        </div></div>
-
-
-        <div class="card">
-          <div class="card-body">
-      
-        <div class="form-group">
-          <div class="col-md-2 control-label">
-              <h3>Dados Institucional</h3>
-          </div>
-       </div>
-        <!-- Select Basic -->
-      <label class="col-md-2 control-label" for="cargos">Cargos </label>
-          <div class="col-md-3">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <select class="form-control" id="cargos" name="cargos" formControlName="cargos" >
-            <option selected label="[----SELECIONE----]" disabled></option>
-            <option *ngFor="let cargos of categoria" value= {{cargos.descricao}}  >{{cargos.descricao}}</option>
-          </select>
-          </div>
-
-          </div></div>
-        
-         
-         <!-- Text input-->
-         <div class="card">
-          <div class="card-body">
-         
-        <div id="newpost">
-           <div class="form-group">
-            <div class="col-md-2 control-label">
-                <h3>Responsável</h3>
-            </div>
-         </div>
-        </div></div>   
-    
-        
-        <!-- Text input-->
-    
-        
- 
-        
-       
-        
-        
-        
+  
         <!-- Button (Double) -->
         <div class="form-group">
           <label class="col-md-2 control-label" for="Cadastrar"></label>
           <div class="col-md-8">
             <button id="Cadastrar" name="Cadastrar" (click)="cadUser()" class="btn btn-success" type="Submit">Cadastrar</button>
             <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
-          </div>
+            
+           </div>
         </div>
+
+          <!-- Text input-->
+
+           
+            </div>
         
-        </div>
-        </div>
-      
+      </div>
+        
        
+   
       </fieldset>
+      
         
-     
-        </form>
-        
+      
+      </form>
+      
         </body>
- </html>
+        </html>
+        
+   
+        <table class="table table-striped mb-0" > 
+          <thead style="background-color: #002d72;">
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of usuarios">
+              <td>{{u.nome}}<td>
+              <td></td>
+            </tr>
+                  </tbody>
+        </table>
+ 

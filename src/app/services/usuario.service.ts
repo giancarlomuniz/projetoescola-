@@ -5,6 +5,7 @@ import { AppConstants } from '../app-constants';
 import { Usuario } from '../model/Usuario';
 import { Observable } from 'rxjs';
 import { Categoria } from '../model/categoria';
+import { Response } from './response';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,15 @@ import { Categoria } from '../model/categoria';
 export class UsuarioService {
 
   private urlApi = AppConstants.baseUrl;
-  
 
-  constructor(private http: HttpClient, private router:Router) {
- 
-   }
+
+
+  constructor(private http: HttpClient, private router:Router) { }
 
    
+  listaUser():Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.urlApi + '/listaUse');
+  }
    getCargo():Observable<Categoria[]>{
     return this.http.get<Categoria[]>( AppConstants.getBaseUrlPath +'lsitaCategoria');
    }
@@ -45,7 +48,8 @@ return this.http.get(AppConstants.baseUrl+'/cep/'+cep);
 
    novoUser() {
  
-
   }
+
+
 
 }

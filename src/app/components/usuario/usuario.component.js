@@ -134,6 +134,9 @@ else if(idade()<18) {
 div.style.display = "inline";
 }
 
+
+
+
 }
 
 

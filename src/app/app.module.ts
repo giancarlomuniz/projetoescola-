@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpIinterceptorModule } from './interceptor/interceptor-projeto.interceptor';
 import { guardiaoGuard } from './guard/guardiao.guard';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NavEsquedaComponent } from './nav-esqueda/nav-esqueda.component';
+
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ProfessorComponent } from './components/professor/professor.component';
@@ -40,7 +40,7 @@ export const routes = RouterModule.forRoot(appRoutes);
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    NavEsquedaComponent,
+   
     CategoriaComponent,
     UsuarioComponent,
     ProfessorComponent

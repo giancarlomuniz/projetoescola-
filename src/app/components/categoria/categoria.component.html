@@ -11,7 +11,7 @@
    <form class="form-horizontal" [formGroup]="catForm">
     <input type="hidden" id="usuario" name="usuario"  formControlName="usuario">
 
- <fieldset style="width: 80%;margin-left: 10%;">
+ <fieldset style="width: 70%;margin-left: 15%;">
    <div class="panel panel-primary">
        <div class="panel-heading">Categoria</div>
        
@@ -32,11 +32,10 @@
        
 
 
-       <div class="card">
+       <div class="card" >
          <div class="card-body">
-       <div class="col-md-2 control-label">
-         <h3>Categoria</h3>
-       </div>
+      
+          
 
    <div class="col-md-11 control-label">
           
@@ -46,7 +45,7 @@
       
    
    <!-- Text input-->
-   <div class="form-group">
+   <div class="form-group" style="margin-left: -11%;">
      <label class="col-md-2 control-label" for="id">Codigo </label>  
      <div class="col-md-1" >
      <input id= "id" name="id" placeholder="Matricula"  style="width: 120px;" class="form-control input-md" 
@@ -54,8 +53,8 @@
      </div>
      <label class="col-md-2 control-label" for="descricao" >Descrição </label>  
      <div class="col-md-4">
-     <input id="descricao" name="descricao" formControlName="descricao" placeholder="" c
-            lass="form-control input-md" required="" type="text">
+     <input id="descricao" name="descricao" formControlName="descricao" placeholder="" 
+            class="form-control input-md" required="" type="text">
      <div *ngIf="catForm.get('descricao')?.errors"></div>
     </div>
        </div>
@@ -67,7 +66,7 @@
    
    </div>
     <!-- Button (Double) -->
-   <div class="form-group">
+   <div class="form-group" style="margin-left: -20%;">
      <label class="col-md-2 control-label" for="Cadastrar"></label>
      <div class="col-md-8">
        <button id="Cadastrar" name="Cadastrar"  class="btn btn-success" type="Submit" (click)="cadCategoria()" [disabled]="!catForm.valid" style="margin: 15px;" >Cadastrar</button>
@@ -83,3 +82,40 @@
    
    </body>
 </html>
+
+
+
+<fieldset style="width: 50%;margin-left: 15%;">
+  
+      <div class="container">
+        <div class="row justify-content-center" style="width: 96%; margin-left: -23px; margin-top: -15px;">
+          <div class="col-12">
+            <div class="card">
+              
+              <div class="card-body p-0">
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 300px;">
+                  <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                     
+                      <tr>
+                     
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Função</th>
+                      
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor =" let c of lista">
+                        <td>{{c.id}}</td>
+                        <td>{{c.descricao}}</td>
+                        
+                      </tr>
+                        </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   </fieldset>

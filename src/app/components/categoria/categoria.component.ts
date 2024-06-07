@@ -11,16 +11,32 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './categoria.component.html',
   styleUrls: ['./categoria.component.css']
 })
-export class CategoriaComponent {
+export class CategoriaComponent implements OnInit{
 
 
+  lista = new  Array<Categoria>();
 
-  constructor(private fb:FormBuilder, private categoriaService:CategoriaService, private loginService:LoginService){
-
-    
+  constructor(private fb:FormBuilder, private categoriaService:CategoriaService, private loginService:LoginService){}
+  
+ngOnInit(): void {
+    this.listaCategoria();
   }
 
+
+listaCategoria():void{
+  this.categoriaService.lsitaCategoria().subscribe({
+    next: (res) =>{
+     this.lista = res;
+   
+    },
+        error:(error)=>{
+         alert(error);
+    }
+   
+     });
+}
  
+
   /*Pega dados do formulario*/
   catForm =this.fb.group({
     id:[],
@@ -55,5 +71,10 @@ cadCategoria(){
    categoria.usuario
   this.categoriaService.salvarCategoria(categoria);
 
+  //Atualizar tabela
+this.listaCategoria();
+
 }
+
+
 }

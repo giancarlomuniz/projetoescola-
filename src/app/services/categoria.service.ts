@@ -19,16 +19,31 @@ export class CategoriaService {
    return this.http.post<String>(this.urlApi +'categoria/salvarCategoria', categoria).subscribe({
      
      next:(res) =>{
-      console.info(categoria);
+      console.info(res);
+
+      var varResposta = JSON.stringify(res);
+     
+      var jsonResposta = JSON.parse(varResposta);
+
+      if (jsonResposta.error != undefined) {
+        alert(jsonResposta.error);
+      }else{
+
+        alert('Salvo com sucesso !');
+      }
       
     },
 
     error:(error)=>{
       console.info(error);
-      alert('Deu erro:' + error.error)
+      alert('Deu erro:' + error);
     }
     
   });
+ }
+
+ lsitaCategoria(){
+  return  this.http.get<Categoria[]>(this.urlApi + 'lsitaCategoria');
  }
 
 }

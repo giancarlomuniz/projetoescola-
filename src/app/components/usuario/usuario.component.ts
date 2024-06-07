@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable, map } from 'rxjs';
 import { Usuario } from 'src/app/model/Usuario';
 import { Categoria } from 'src/app/model/categoria';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -11,6 +12,8 @@ import { __values } from 'tslib';
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
+  usuarios:Usuario[] = [];
+
 
   categoria: Categoria[];
   
@@ -18,10 +21,16 @@ export class UsuarioComponent implements OnInit {
   
 
 ngOnInit(){
-
-  
+this.listUse();
+ 
 this.exibiCargo();
+
 }
+
+
+
+
+
    
      /*Pegar dados do formularios*/
   usuarioForm = this.fb.group({
@@ -40,9 +49,7 @@ this.exibiCargo();
        sexo:['', Validators.required],
        cargos:[''],
                });
-   
- 
-       
+           
  cadUserObjeto():Usuario{
    return{
      id:this.usuarioForm.get('id')?.value ?? 0,
@@ -58,34 +65,28 @@ this.exibiCargo();
      uf:this.usuarioForm.get('uf')?.value!,
      sexo:this.usuarioForm.get('sexo')?.value!,
      cargo:this.usuarioForm.get('cargos')?.value!,
-     
- 
-   
-    
+         
    };
    
    }
  
+ 
+
 
   consultaCep(){
-
-    
-   
+     
    const usuario = this.cadUserObjeto();
     const cep = this.usuarioForm.get('cep')?.value;
 
     if (cep) {
-      
-    
+         
    this.usuarioService.buscaCep(cep).subscribe((dados) =>{
 
     const dadosCep ={
-
       logradouro:  dados.logradouro,
-     
       complemento: dados.complemento,
-     bairro: dados.bairro,
-    localidade:dados.localidade,
+      bairro: dados.bairro,
+      localidade:dados.localidade,
       uf:dados.uf,
     };
    this.usuarioForm.patchValue(dadosCep);
@@ -97,7 +98,6 @@ this.exibiCargo();
   
   );
  
-
   }else{
 console.error('Cep não informado');
  
@@ -107,35 +107,39 @@ console.error('Cep não informado');
   }
 
 
-
+/*Salvar Usuario*/
   cadUser(){
     const usuario =this.cadUserObjeto();
-  
-     
-    console.debug(usuario);
 
     this.usuarioService.salvarUsuario(usuario);
     this.usuarioForm.reset();
   }
+  
 
 exibiCargo(){
-
-      
   this.usuarioService.getCargo().subscribe(
 
     (response)=>{
-      console.info(response);
+    
       this.categoria = response;
-
      
     }
   );
-   
- 
-    
-    }
 
+      }
+
+  listUse(){
+    
+    this.usuarioService.listaUser().subscribe(
+      (res) =>{
+
+    
+      this.usuarios =res;
+      },
+    );
+
+}
+}
  
- }
 
 

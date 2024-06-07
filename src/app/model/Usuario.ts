@@ -14,7 +14,6 @@ bairro?:String;
 localidade?:String;
 uf?:String;
 sexo?:string;
-telefones?: Array<Telefone>;
 cargo?:String;
 
 
