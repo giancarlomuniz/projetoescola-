@@ -8,10 +8,11 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
-        </head>
+
+       </head>
         <body>
         
-        <form class="form-horizontal">
+        <form class="form-horizontal" [formGroup]="professorForm">
         <fieldset>
         <div class="panel panel-primary">
             <div class="panel-heading">Cadastro de Cliente</div>
@@ -41,381 +42,51 @@
         
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-2 control-label" for="Nome">Nome </label>  
+          <label class="col-md-2 control-label" for="id">Id </label>  
           <div class="col-md-1" >
-          <input id="Nome" name="matricula" placeholder="Matricula" class="form-control input-md" required="" type="text" readonly="true">
+          <input id="id" name="id" placeholder="Matricula"  formControlName="id" class="form-control input-md" required="" type="text" readonly="true">
           </div>
-          <label class="col-md-2 control-label" for="Nome" style="margin-left: -11%;">Nome </label>  
-          <div class="col-md-4">
-          <input id="Nome" name="Nome"  placeholder="" class="form-control input-md" required="" type="text">
-          </div>
-          <label class="col-md-2 control-label" for="rg" style="margin-left: -11%;">RG</label>  
-          <div class="col-md-1">
-          <input id="rg" name="rg" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="11" pattern="[0-9]+$">
-          </div>
+       
+          <label class="col-md-1 control-label" for="dataAdmProf">Data Admissão</label>  
+          <div class="col-md-2">
+            <input type="date" maxlength="100" class="form-control" id="dataAdmProf" name="dataAdmProf" required 
+            formControlName="dataAdmProf"  >
+        </div>
         </div>
         
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="Nome">CPF</label>  
-          <div class="col-md-2">
-          <input id="cpf" name="cpf" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="11" pattern="[0-9]+$">
-          </div>
-          
-          <label class="col-md-1 control-label" for="Nome">Nascimento</label>  
-          <div class="col-md-2">
-          <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+       
         </div>
         
-        <!-- Multiple Radios (inline) -->
-        
-          <label class="col-md-1 control-label" for="radios">Sexo </label>
-          <div class="col-md-4"> 
-            <label required="" class="radio-inline" for="radios-0" >
-              <input name="sexo" id="sexo" value="feminino" type="radio" required>
-              Feminino
-            </label> 
-            <label class="radio-inline" for="radios-1">
-              <input name="sexo" id="sexo" value="masculino" type="radio">
-              Masculino
-            </label>
+
+       
           </div>
-        </div>
-        
-        <!-- Prepended text-->
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="prependedtext">Telefone </label>
-          <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-              <input id="prependedtext" name="prependedtext" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-              OnKeyPress="formatar('## #####-####', this)">
-            </div>
-          </div>
-          
-            <label class="col-md-1 control-label" for="prependedtext">Telefone</label>
-             <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-              <input id="prependedtext" name="prependedtext" class="form-control" placeholder="XX XXXXX-XXXX" type="text" maxlength="13"  pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-              OnKeyPress="formatar('## #####-####', this)">
-            </div>
-          </div>
-         </div> 
+     
+     
+       
+       
         
       
-        <!-- Prepended text-->
-        <div class="form-group">
-          <div class="col-md-2 control-label">
-              <h3>Dados Acesso</h3>
-          </div>
-  
-       </div>
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="prependedtext">Email </label>
-          <div class="col-md-3">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input id="prependedtext" name="prependedtext" class="form-control" placeholder="email@email.com" required="" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
-            </div>
-          </div>
-  
-          <label class="col-md-2 control-label" for="prependedtext">Senha </label>
-          <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-              <input id="senha" name="senha" class="form-control" placeholder="Senha" required="" type="password" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
-            </div>
-          </div>
-        </div>
-  
-         <div class="form-group">
-          <div class="col-md-2 control-label">
-              <h3>Dados Endereço</h3>
-          </div>
-       </div>
-        
-        <!-- Search input-->
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="CEP">CEP</label>
-          <div class="col-md-2">
-            <input id="cep" name="cep" placeholder="Apenas números" class="form-control input-md" required="" value="" type="search" maxlength="8" pattern="[0-9]+$">
-          </div>
-          <div class="col-md-2">
-              <button type="button" class="btn btn-primary" onclick="pesquisacep(cep.value)">Pesquisar</button>
-            </div>
-        </div>
-        
-        <!-- Prepended text-->
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="prependedtext">Endereço</label>
-          <div class="col-md-4">
-            <div class="input-group">
-              <span class="input-group-addon">Rua</span>
-              <input id="rua" name="rua" class="form-control" placeholder="" required="" readonly="readonly" type="text">
-            </div>
-            
-          </div>
-            <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon">Nº </span>
-              <input id="numero" name="numero" class="form-control" placeholder="" required=""  type="text">
-            </div>
-            
-          </div>
-          
-          <div class="col-md-3">
-            <div class="input-group">
-              <span class="input-group-addon">Bairro</span>
-              <input id="bairro" name="bairro" class="form-control" placeholder="" required="" readonly="readonly" type="text">
-            </div>
-            
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="prependedtext"></label>
-          <div class="col-md-4">
-            <div class="input-group">
-              <span class="input-group-addon">Cidade</span>
-              <input id="cidade" name="cidade" class="form-control" placeholder="" required=""  readonly="readonly" type="text">
-            </div>
-            
-          </div>
-          
-           <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon">Estado</span>
-              <input id="estado" name="estado" class="form-control" placeholder="" required=""  readonly="readonly" type="text">
-            </div>
-            
-          </div>
-        </div>
-        
-      
-        <div class="form-group">
-          <div class="col-md-2 control-label">
-              <h3>Dados Escolares</h3>
-          </div>
-       </div>
-        <!-- Select Basic -->
-        <div class="form-group">
-            
-          <label class="col-md-2 control-label" for="selectbasic">Escolaridade</label>
-          
-          <div class="col-md-3">
-            <select required id="escolaridade" name="escolaridade" class="form-control">
-            <option value=""></option>
-              <option value="Analfabeto">Analfabeto</option>
-              <option value="Fundamental Incompleto">Fundamental Incompleto</option>
-              <option value="Fundamental Completo">Fundamental Completo</option>
-              <option value="Médio Incompleto">Médio Incompleto</option>
-              <option value="Médio Completo">Médio Completo</option>
-              <option value="Superior Incompleto">Superior Incompleto</option>
-              <option value="Superior Completo">Superior Completo</option>
-            </select>
-          </div>
-        
-        
-        <!-- Text input-->
-        
-          <label class="col-md-1 control-label" for="profissao">Profissão</label>  
-          <div class="col-md-4">
-          <input id="profissao" name="profissao" type="text" placeholder="" class="form-control input-md" required="">
-            
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="encaminhamento">Encaminhamento</label>
-          <div class="col-md-4">
-            <div class="input-group">
-              <span class="input-group-addon">     
-                <label class="radio-inline" for="radios-0">
-              <input type="radio" name="enc" id="enc" value="Nao" onclick="desabilita('enc_instituicao')" required>
-              Não
-            </label> 
-            <label class="radio-inline" for="radios-1">
-              <input type="radio" name="enc" id="enc" value="sim" onclick="habilita('enc_instituicao')">
-              Sim
-            </label>
-              </span>
-              <input id="enc_instituicao" name="enc" class="form-control" type="text" placeholder="Instituição" >
-              
-            </div>
-            
-          </div>
-          
-          
-           <label class="col-md-1 control-label" for="encaminhamento">Aluno FAP-Betim</label>
-          <div class="col-md-4">
-            <div class="input-group">
-              <span class="input-group-addon">     
-                <label class="radio-inline" for="radios-0">
-              <input type="radio" name="aluno" id="enc" value="Nao" required>
-              Não
-            </label> 
-            <label class="radio-inline" for="radios-1">
-              <input type="radio" name="aluno" id="enc" value="sim">
-              Sim
-            </label>
-              </span>
-              <input id="enc" name="curso" class="form-control" type="text" placeholder="Curso" >
-              
-            </div>
-            
-          </div>
-          
-          
-         </div>
-         
          <!-- Text input-->
   
          
-        <div id="newpost">
-           <div class="form-group">
-            <div class="col-md-2 control-label">
-                <h3>Responsável</h3>
-            </div>
-         </div>
-            
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="Nome">Nome </label>  
-          <div class="col-md-8">
-          <input id="Nome" name="Nome" placeholder="" class="form-control input-md" required="" type="text">
-          </div>
-        </div>
-        
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="vinculo">Vinculo com cliente </label>  
-          <div class="col-md-2">
-          <input id="vinculo" name="vinculo" placeholder="" class="form-control input-md" required="" type="text" pattern="/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/">
-            
-          </div>
-        
-          
-          <label class="col-md-1 control-label" for="Nome">Nascimento</label>  
-          <div class="col-md-2">
-          <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)">
-        </div>
-        
-        <!-- Multiple Radios (inline) -->
-        
-          <label class="col-md-1 control-label" for="radios">Sexo </label>
-          <div class="col-md-4"> 
-            <label required="" class="radio-inline" for="radios-0" >
-              <input name="sexo" id="sexo" value="feminino" type="radio" required>
-              Feminino
-            </label> 
-            <label class="radio-inline" for="radios-1">
-              <input name="sexo" id="sexo" value="masculino" type="radio">
-              Masculino
-            </label>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="Estado Civil">Estado Civil</label>
-          <div class="col-md-2">
-            <select required id="Estado Civil" name="Estado Civil" class="form-control">
-                <option value=""></option>
-              <option value="Solteiro(a)">Solteiro(a)</option>
-              <option value="Casado(a)">Casado(a)</option>
-              <option value="Divorciado(a)">Divorciado(a)</option>
-              <option value="Viuvo(a)">Viuvo(a)</option>
-            </select>
-          </div>
-        
-        <label class="col-md-1 control-label" for="Filhos">Filhos</label>
-          <div class="col-md-3">
-            <div class="input-group">
-              <span class="input-group-addon">     
-                <label class="radio-inline" for="radios-0">
-              <input type="radio" name="ofilhos" id="ofilhos" value="nao" onclick="desabilita('ofilhos_qtd')" required>
-              Não
-            </label> 
-            <label class="radio-inline" for="radios-1">
-              <input type="radio" name="ofilhos" id="ofilhos" value="sim" onclick="habilita('ofilhos_qtd')">
-              Sim
-            </label>
-              </span>
-              <input id="ofilhos_qtd" name="ofilhos_qtd" class="form-control" type="text" placeholder="Quantos?" pattern="[0-9]+$" >
-              
-            </div>
-            
-          </div>
-        </div>
-        
-        <div class="form-group">
-            
-          <label class="col-md-2 control-label" for="selectbasic">Escolaridade </label>
-          
-          <div class="col-md-3">
-            <select required id="escolaridade" name="escolaridade" class="form-control">
-            <option value=""></option>
-              <option value="Analfabeto">Analfabeto</option>
-              <option value="Fundamental Incompleto">Fundamental Incompleto</option>
-              <option value="Fundamental Completo">Fundamental Completo</option>
-              <option value="Médio Incompleto">Médio Incompleto</option>
-              <option value="Médio Completo">Médio Completo</option>
-              <option value="Superior Incompleto">Superior Incompleto</option>
-              <option value="Superior Completo">Superior Completo</option>
-            </select>
-          </div>
-        
-        
-        <!-- Text input-->
-        
-          <label class="col-md-1 control-label" for="profissao">Profissão</label>  
-          <div class="col-md-4">
-          <input id="profissao" name="profissao" type="text" placeholder="" class="form-control input-md" required="">
-            
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="prependedtext">Telefone</label>
-          <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-              <input id="prependedtext" name="prependedtext" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-              OnKeyPress="formatar('## #####-####', this)">
-            </div>
-          </div>
-          
-            <label class="col-md-1 control-label" for="prependedtext">Telefone</label>
-             <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-              <input id="prependedtext" name="prependedtext" class="form-control" placeholder="XX XXXXX-XXXX" type="text" maxlength="13"  pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-              OnKeyPress="formatar('## #####-####', this)">
-            </div>
-          </div>
-         </div> 
-        <div class="form-group">
-          <label class="col-md-2 control-label" for="prependedtext">Email </label>
-          <div class="col-md-5">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input id="prependedtext" name="prependedtext" class="form-control" placeholder="email@email.com" required="" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
-            </div>
-          </div>
-        </div>
-        
-        </div>
-        
+       
         <!-- Button (Double) -->
         <div class="form-group">
           <label class="col-md-2 control-label" for="Cadastrar"></label>
           <div class="col-md-8">
-            <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+  
+    <button id="Cadastrar" name="Cadastrar" class="btn btn-success"  (click)="cadProf()"  type="Submit">Cadastrar</button>
             <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
           </div>
         </div>
+   
         
-        </div>
-        </div>
+        
+
+        
+        
+
+        
         
         
         </fieldset>
@@ -423,3 +94,58 @@
         
         </body>
         </html>
+        <fieldset style="width: 50%;margin-left: 15%; margin-top: 30px;">
+  
+          <div class="container">
+            <div class="row justify-content-center" style="width: 119%; margin-left: -23px; margin-top: -15px;">
+              <div class="col-12">
+                <div class="card">
+                  
+                  <div class="card-body p-0">
+                    <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 300px;">
+                      <table class="table table-striped mb-0">
+                        <thead style="background-color: #002d72;">
+                         
+                          <tr>
+                         
+                            <th scope="col">Codigo</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Função</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Deletar</th>
+                   
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor =" let c of lista">
+                            <td>{{c.id}}</td>
+                            <td>{{c.nome}}</td>
+                            <td>{{c.cargo}}</td>
+                            <td><button type="button" class="btn btn-warning" (click)="editarUser(c)">Editar</button></td>
+                            <td><button type="button" class="btn btn-danger" (click)="deleteUser(c)">Deletar</button></td>
+                            
+                          </tr>
+                            </tbody>
+                      </table>
+                     
+                    </div>
+                  </div>
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item" >
+                        <a class="page-link" (click)="voltar()" >Voltar</a>
+                      </li>
+                      <li class="page-item" *ngFor="let page of arrayQtdPagina; let i = index " >
+                        <a class="page-link" (click)="buscaPagina(i)">{{(i + 1)}}</a>
+                      </li>
+                     
+                      <li class="page-item">
+                        <a class="page-link" (click)="avancar()">Avançar</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+       </fieldset>

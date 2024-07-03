@@ -1,9 +1,9 @@
+import { Data } from "@angular/router";
+import { Usuario } from "./Usuario";
+
 export class Professor {
+    
+    dataAdmProf:Data = null;
+    id_usuario: Number;
 
-    constructor(private cod: Number){
-
-        this.id =cod;
-    }
-
-    id?: Number;
-}
+}; 

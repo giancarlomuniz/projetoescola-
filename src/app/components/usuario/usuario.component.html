@@ -17,8 +17,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">Cadastro de Cliente</div>
            
-            <div class="overflow-y-scroll" style="height: 400px;">
-            
+          
 
             <div class="panel-body">
         <div class="form-group">
@@ -100,7 +99,7 @@
       <label class="col-md-2 control-label" for="cep">CEP</label>
       <div class="col-md-2">
         <input id="cep"  name="cep" (blur)="consultaCep()" placeholder="Apenas números" formControlName ='cep' 
-              [value]="usuarioForm.get('cep')" class="form-control input-md" required="" value="" type="search" maxlength="9" pattern="[0-9]+$">
+             class="form-control input-md" required="" value="" type="search" maxlength="9" pattern="[0-9]+$">
         
       </div>
    
@@ -112,7 +111,7 @@
       <div class="col-md-4">
         <div class="input-group">
           <span class="input-group-addon">Logradouro</span>
-          <input id="logradouro" name="logradouro1" class="form-control"  formControlName ='logradouro' placeholder="" required=""  type="text">
+          <input id="logradouro" name="logradouro" class="form-control"  formControlName ='logradouro' placeholder="" required=""  type="text">
          
         </div>
         
@@ -122,7 +121,7 @@
         <div class="input-group">
           <span class="input-group-addon">complemento </span>
           <input id="complemento"  name="complemento"   class="form-control" formControlName ='complemento'
-                  [value]="usuarioForm.get('complemento')" placeholder="" required=""  type="text">
+                   placeholder="" required=""  type="text">
         </div>
         
       </div>
@@ -131,7 +130,7 @@
         <label class="col-md-2 control-label" for="bairro"></label>
         <div class="input-group">
           <span class="input-group-addon">Bairro</span>
-          <input id="bairro" name="bairro" class="form-control"  formControlName ='bairro' [value]="usuarioForm.get('bairro')"  placeholder="" required=""type="text">
+          <input id="bairro" name="bairro" class="form-control"  formControlName ='bairro'   placeholder="" required=""type="text">
         </div>
         
       </div>
@@ -142,7 +141,7 @@
       <div class="col-md-4">
         <div class="input-group">
           <span class="input-group-addon">Cidade</span>
-          <input id="localidade" name="localidade" formControlName ='localidade' [value]="usuarioForm.get('localidade')"   class="form-control" placeholder="" required=""  type="text">
+          <input id="localidade" name="localidade" formControlName ='localidade'   class="form-control" placeholder="" required=""  type="text">
         </div>
         
       </div>
@@ -151,7 +150,7 @@
         <label class="col-md-2 control-label" for="uf"></label>
         <div class="input-group">
           <span class="input-group-addon">Estado</span>
-          <input id="uf" name="uf" formControlName ='uf' class="form-control"  [value]="usuarioForm.get('uf')"   placeholder="Estado" required=""   type="text">
+          <input id="uf" name="uf" formControlName ='uf' class="form-control"     placeholder="Estado" required=""   type="text">
         </div>
         
       </div>
@@ -169,7 +168,7 @@
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
       <select class="form-control" id="cargos" name="cargos" formControlName="cargos" >
         <option selected label="[----SELECIONE----]" disabled></option>
-        <option *ngFor="let cargos of categoria" value= {{cargos.descricao}}  >{{cargos.descricao}}</option>
+                <option *ngFor="let cargos of categoria" value= {{cargos.descricao}}  >{{cargos.descricao}}</option>
       </select>
       </div>
       <!-- Telefone text-->
@@ -221,7 +220,7 @@
           <!-- Text input-->
 
            
-            </div>
+        
         
       </div>
         
@@ -233,22 +232,68 @@
       
       </form>
       
+      <form >
+        <div class="col-md-4" style="margin-left: 17%; margin-top: -1%; ">
+             <label class="col-md-2 control-label" for="pesquisa" >Pesquisar </label>  
+           <input id="pesquisa" name="pesquisa"  #pesquisa  placeholder="Nome para pesquisa"  (blur)="setPesquisa(pesquisa.value)" class="form-control input-md" type="text" >
+        
+           </div>
+           </form>
+           <button class="btn-warning" (click)="pesquisar()" style="margin-top: 10px;">Pesquisar</button>
+           
         </body>
         </html>
         
-   
-        <table class="table table-striped mb-0" > 
-          <thead style="background-color: #002d72;">
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Nome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let u of usuarios">
-              <td>{{u.nome}}<td>
-              <td></td>
-            </tr>
-                  </tbody>
-        </table>
- 
+        <fieldset style="width: 50%;margin-left: 15%; margin-top: 30px;">
+  
+          <div class="container">
+            <div class="row justify-content-center" style="width: 119%; margin-left: -23px; margin-top: -15px;">
+              <div class="col-12">
+                <div class="card">
+                  
+                  <div class="card-body p-0">
+                    <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 300px;">
+                      <table class="table table-striped mb-0">
+                        <thead style="background-color: #002d72;">
+                         
+                          <tr>
+                         
+                            <th scope="col">Codigo</th>
+                            <th scope="col">Função</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Deletar</th>
+                   
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor =" let c of listaUsuario">
+                            <td>{{c.id}}</td>
+                            <td>{{c.nome}}</td>
+                            <td><button type="button" class="btn btn-warning" (click)="editarUser(c)">Editar</button></td>
+                            <td><button type="button" class="btn btn-danger" (click)="deleteUser(c)">Deletar</button></td>
+                            
+                          </tr>
+                            </tbody>
+                      </table>
+                     
+                    </div>
+                  </div>
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item" >
+                        <a class="page-link" (click)="voltar()" >Voltar</a>
+                      </li>
+                      <li class="page-item" *ngFor="let page of arrayQtdPagina; let i = index " >
+                        <a class="page-link" (click)="buscaPagina(i)">{{(i + 1)}}</a>
+                      </li>
+                     
+                      <li class="page-item">
+                        <a class="page-link" (click)="avancar()">Avançar</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+       </fieldset>

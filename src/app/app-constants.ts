@@ -3,5 +3,5 @@ export class AppConstants{
 	public static get baseLogin(): string { return this.baseServidor + "cursospringrestapi/login" }
 	public static get baseUrl(): string { return this.baseServidor + "cursospringrestapi/usuario" }
 	public static get baseUrlProf(): string { return this.baseServidor + "cursospringrestapi/usuario/professor/" }
-	  public static get getBaseUrlPath(): string {return this.baseServidor + "cursospringrestapi/"}
+	  public static get getBaseUrlPath(): string {return this.baseServidor + "cursospringrestapi"}
 }

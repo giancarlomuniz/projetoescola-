@@ -1,24 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Categoria } from '../model/categoria';
 import { AppConstants } from '../app-constants';
 import { LoginService } from './login.service';
-import { Usuario } from '../model/Usuario';
+import { Acesso } from '../model/acesso';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriaService {
+export class AcessoService {
 
   private urlApi = AppConstants.getBaseUrlPath;
 
   constructor(private http: HttpClient, private loginService:LoginService, private router:Router) { }
 
- salvarCategoria(categoria:Categoria){
+ salvarAcesso(acesso:Acesso){
 
-   return this.http.post<String>(this.urlApi +'/categoria/salvarCategoria', categoria).subscribe({
+   return this.http.post<String>(this.urlApi +'/salvarAcesso', acesso).subscribe({
      
      next:(res: any) =>{
       console.info(res);
@@ -44,9 +44,9 @@ export class CategoriaService {
   });
  }
 
- deletarCategoria(categoria:Categoria):void{
+ deletarAcesso(acesso:Acesso):void{
 
-  this.http.post<String>(this.urlApi +'/deletarCategoria', categoria).subscribe({
+  this.http.post<String>(this.urlApi +'/deleteAcesso', acesso).subscribe({
     
     next:(res) =>{
    
@@ -70,19 +70,19 @@ export class CategoriaService {
  });
 }
 
- lsitaCategoria(pagina:Number){
-  return  this.http.get<Categoria[]>(this.urlApi + '/listaPorPageCategoria/' + this.loginService.objetoUser() + '/'+ pagina);
+ lsitaAcesso(pagina:Number){
+  return  this.http.get<Acesso[]>(this.urlApi + '/listaPorPagina/' + this.loginService.objetoUser() + '/'+ pagina);
  }
 
 
 
  buscaId(id:any){
 
-  return this.http.get<Categoria>(this.urlApi + '/buscaId/'+ id);
+  return this.http.get<Acesso>(this.urlApi + '/buscaId/'+ id);
  }
 
- consultaCategoria( val: String){
-  return this.http.get<Categoria[]>(this.urlApi + '/buscaPorDesCategoria/'+ val + '/'+this.loginService.objetoUser());
+ consultaAcesso( val: String){
+  return this.http.get<Acesso[]>(this.urlApi + '/buscaPorNome/'+ val + '/'+this.loginService.objetoUser());
 
  }
 

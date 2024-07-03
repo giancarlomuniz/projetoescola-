@@ -1,20 +1,21 @@
-import { Telefone } from "./telefone";
 
 export class Usuario{
+
+    constructor(){}
     
 id?:Number;
-nome?:String;
+nome?:string;
 login:String = '';
 senha?:String;
-cpf?:String;
-cep?:String;
-logradouro?:String;
-complemento?:String;
-bairro?:String;
-localidade?:String;
-uf?:String;
+cpf?:string;
+cep?:string;
+logradouro?:string;
+complemento?:string;
+bairro?:string;
+localidade?:string;
+uf?:string;
 sexo?:string;
-cargo?:String;
+cargo?:string;
 
 
 
