@@ -79,15 +79,7 @@
             <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
           </div>
         </div>
-   
-        
-        
 
-        
-        
-
-        
-        
         
         </fieldset>
         </form>
@@ -130,21 +122,21 @@
                      
                     </div>
                   </div>
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item" >
-                        <a class="page-link" (click)="voltar()" >Voltar</a>
-                      </li>
-                      <li class="page-item" *ngFor="let page of arrayQtdPagina; let i = index " >
-                        <a class="page-link" (click)="buscaPagina(i)">{{(i + 1)}}</a>
-                      </li>
-                     
-                      <li class="page-item">
-                        <a class="page-link" (click)="avancar()">Avançar</a>
-                      </li>
-                    </ul>
-                  </nav>
                 </div>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item" >
+                      <a class="page-link" (click)="voltar()" >Voltar</a>
+                    </li>
+                    <li class="page-item" *ngFor="let page of arrayQtdPagina; let i = index " >
+                      <a class="page-link" (click)="buscaPagina(i)">{{(i + 1)}}</a>
+                    </li>
+                   
+                    <li class="page-item">
+                      <a class="page-link" (click)="avancar()">Avançar</a>
+                    </li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>

@@ -13,8 +13,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ProfessorComponent } from './components/professor/professor.component';
+import { AcessoComponent } from './components/acesso/acesso.component';
 import { AlunoComponent } from './components/aluno/aluno.component';
-import { AcessoComponent } from './components//acesso/acesso.component';
+
 
 
 
@@ -31,6 +32,9 @@ export const appRoutes: Routes = [
   {path: 'usuario', component: UsuarioComponent, canActivate:[guardiaoGuard], data:{role:['ROLE_ADMIN']}},
   {path: 'professor', component: ProfessorComponent, canActivate:[guardiaoGuard], data:{role:['ROLE_ADMIN']}},
   {path: 'acesso', component: AcessoComponent, canActivate:[guardiaoGuard], data:{role:['ROLE_ADMIN']}},
+  {path: 'aluno', component: AlunoComponent, canActivate:[guardiaoGuard], data:{role:['ROLE_ADMIN']}},
+ 
+
 
  
  
@@ -47,8 +51,8 @@ export const routes = RouterModule.forRoot(appRoutes);
     CategoriaComponent,
     UsuarioComponent,
     ProfessorComponent,
-    AlunoComponent,
-    AcessoComponent
+    AcessoComponent,
+    AlunoComponent
   
   
   ],

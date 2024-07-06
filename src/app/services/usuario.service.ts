@@ -22,7 +22,7 @@ export class UsuarioService {
    
  
    getCargo():Observable<Categoria[]>{
-    return this.http.get<Categoria[]>( AppConstants.getBaseUrlPath +'lsitaCategoria');
+    return this.http.get<Categoria[]>( AppConstants.getBaseUrlPath +'/lsitaCategoria');
    }
 
      lsitarUsuario(pagina:Number):Observable<ApiResponse>{

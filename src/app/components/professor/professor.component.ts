@@ -24,12 +24,6 @@ export class ProfessorComponent {
   arrayQtdPagina:Number[]=[];
   paginaAtual:Number = 1;
   
-  
-
-  
-
-
-
   constructor(private fb:FormBuilder, private usuarioService:UsuarioService, private profeService:ProfessorService, private http:HttpClient){
 
 
@@ -41,11 +35,6 @@ export class ProfessorComponent {
 
     });
   }
-
-  
-
-
-
   
 ngOnInit():void{
 this.qtdPaginaUser();
@@ -62,7 +51,7 @@ qtdPaginaUser(){
     next:(res) => {
       this.qtdPage =  Number (res);
    
-        this.arrayQtdPagina =Array(this.qtdPage).fill(0).map((x,i) => i);
+        this.arrayQtdPagina =Array(this.qtdPage).fill(1).map((x,i) => i);
        console.info(this.arrayQtdPagina);
   },
   error:(error) => {
@@ -75,29 +64,26 @@ qtdPaginaUser(){
      /*Pegar dados do formularios*/
           
  cadUserObjeto(): Professor{
-  
-
-   return{
-
-
-    dataAdmProf: this.professorForm.get('dataAdmProf').value,
-  
-    id_usuario: this.professorForm.get('id')?.value!,
+     return{
+    dataAdmProf: this.professorForm.get('dataAdmProf')?.value,
+      id_usuario: this.professorForm.get('id')?.value,
    };
   
   }
 
-
-/*Salvar Usuario*/
-  cadProf(){
-   const professor = this.cadUserObjeto()
+  cadProf(): void {
+    const professor = this.cadUserObjeto(); // Corrigi a declaração da variável
+    const prof ={
+       dataAdmProf:professor.dataAdmProf,
+      usuario:{
+        id:professor.id_usuario,
+       }
+      }
   
-       this.profeService.salvarProfes(professor);
-        
-   this.novo();
-   this.listUse(this.paginaAtual);
+    this.profeService.salvarProfes(professor); // Chame o serviço com o objeto corrigido
   }
-  
+
+
 //Preencher select One
 exibiCargo(){
   this.usuarioService.getCargo().subscribe(

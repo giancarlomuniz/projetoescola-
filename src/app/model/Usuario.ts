@@ -5,7 +5,7 @@ export class Usuario{
     
 id?:Number;
 nome?:string;
-login:String = '';
+login?:string = '';
 senha?:String;
 cpf?:string;
 cep?:string;

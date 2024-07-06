@@ -3,7 +3,7 @@ import { Usuario } from "./Usuario";
 
 export class Professor {
     
-    dataAdmProf:Data = null;
-    id_usuario: Number;
+    dataAdmProf:Date = null;
+    id_usuario: Usuario;
 
 }; 
